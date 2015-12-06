@@ -213,29 +213,5 @@ namespace AnalisadorLexico
             this.toolStripStatusLinha.Text = "Linha: " + line;
             this.toolStripStatusColuna.Text = "Coluna: " + column;
         }
-
-        /// <summary>
-        /// Método responsável pelo syntax highlighter do richTextBox.
-        /// </summary>
-        /// <param name="tokens"></param>
-        /// <param name="color"></param>
-        private void changeColor(string tokens, Color color)
-        {
-            Regex rex = new Regex(@tokens);
-            MatchCollection mc = rex.Matches(richTextBoxEditor.Text);
-
-            int StartCursorPosition = richTextBoxEditor.SelectionStart;
-
-            foreach (Match m in mc)
-            {
-                int startIndex = m.Index;
-                int StopIndex = m.Length;
-                richTextBoxEditor.Select(startIndex, StopIndex);
-                richTextBoxEditor.SelectionColor = color;
-            }
-
-            richTextBoxEditor.SelectionColor = Color.Black;
-            richTextBoxEditor.SelectionStart = StartCursorPosition;
-        }
     }
 }
